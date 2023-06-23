@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Single Liner</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            padding: 20px;
+            transition: background-color 0.5s, color 0.5s;
+        }
+
+        .light-mode {
+            background-color: #f0f0f0;
+            color: #444;
+        }
+
+        .dark-mode {
+            background-color: #444;
+            color: #f0f0f0;
+        }
+
+        textarea {
+            width: 100%;
+            height: 80vh;
+            margin: auto;
+            padding: 15px;
+            font-size: 16px;
+            border-radius: 5px;
+            border: 1px solid #cccccc;
+            background-color: inherit;
+            color: inherit;
+            transition: background-color 0.5s, color 0.5s;
+            resize: none;
+            box-sizing: border-box;
+        }
+
+        .theme-switch {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+        }
+    </style>
+</head>
+<body class="dark-mode">
+    <h1>Single Liner</h1>
+    <textarea id="textEditor" oninput="removeNewLine()" placeholder="Enter your text here..."></textarea>
+
+    <div class="theme-switch">
+        <label for="switch">Dark mode:</label>
+        <input type="checkbox" id="switch" onchange="toggleTheme()"/>
+    </div>
+
+    <script>
+        function removeNewLine() {
+            var textEditor = document.getElementById("textEditor");
+            textEditor.value = textEditor.value.replace(/\r?\n/g, "");
+        }
+
+        function toggleTheme() {
+            var body = document.body;
+            if (body.classList.contains("light-mode")) {
+                body.classList.replace("light-mode", "dark-mode");
+            } else {
+                body.classList.replace("dark-mode", "light-mode");
+            }
+        }
+    </script>
+</body>
+</html>
